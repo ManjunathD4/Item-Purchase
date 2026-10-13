@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Item & Purchase Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Item &amp; Purchase Management</h1>
+<nav>
+  <button data-tab="types" class="active">Item Types</button>
+  <button data-tab="items">Items</button>
+  <button data-tab="purchase">Create Purchase</button>
+  <button data-tab="purchases">Purchases</button>
+  <button data-tab="stock">Stock</button>
+</nav></header>
+<div id="toast"></div>
+<main>
+
+<section id="types">
+  <h2>Item Types</h2>
+  <div class="card inline">
+    <input id="typeName" placeholder="Type name (e.g. Electronics)">
+    <button id="typeSave">Add Type</button><button id="typeCancel" class="secondary hidden">Cancel</button>
+  </div>
+  <div class="card"><table><thead><tr><th>ID</th><th>Name</th><th>Actions</th></tr></thead><tbody id="typeRows"></tbody></table></div>
+</section>
+
+<section id="items" class="hidden">
+  <h2>Item Master</h2>
+  <div class="card">
+    <h3 id="itemFormTitle">Add Item</h3>
+    <div class="grid">
+      <label>Item Name *<input id="iName"></label>
+      <label>Item Type *<select id="iType"></select></label>
+      <label>Purchase Date *<input id="iDate" type="date"></label>
+      <label>Stock Available *<input id="iStock" type="number" min="0" step="1"></label>
+      <label>Status *<select id="iActive"><option value="1">Active</option><option value="0">Inactive</option></select></label>
+    </div>
+    <button id="itemSave">Create Item</button><button id="itemCancel" class="secondary hidden">Cancel</button>
+  </div>
+  <div class="card"><table><thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Purchase Date</th><th>Stock</th><th>Availability</th><th>Status</th><th>Actions</th></tr></thead><tbody id="itemRows"></tbody></table></div>
+  <div class="card hidden" id="itemDetail"></div>
+</section>
+
+<section id="purchase" class="hidden">
+  <h2 id="pTitle">Create Purchase</h2>
+  <div class="card">
+    <p id="pOrderId" class="muted">Purchase.</p>
+    <div class="grid">
+      <label>Purchase Date *<input id="pDate" type="date"></label>
+      <label>Item<select id="pItem"></select></label>
+      <label>Quantity<input id="pQty" type="number" min="1" step="1" value="1"></label>
+    </div>
+    <button id="pAdd" class="secondary">Add to Order</button>
+    <table><thead><tr><th>Item</th><th>Quantity</th><th></th></tr></thead><tbody id="pLines"></tbody></table>
+    <button id="pSubmit">Submit Purchase</button><button id="pCancel" class="secondary hidden">Cancel Edit</button>
+  </div>
+</section>
+
+<section id="purchases" class="hidden">
+  <h2>Purchases</h2>
+  <div class="card"><table><thead><tr><th>Order ID</th><th>Date</th><th>Lines</th><th>Total Qty</th><th>Actions</th></tr></thead><tbody id="purRows"></tbody></table></div>
+  <div class="card hidden" id="purDetail"></div>
+</section>
+
+<section id="stock" class="hidden">
+  <h2>Stock / Availability</h2>
+  <div class="card"><table><thead><tr><th>Item</th><th>Type</th><th>Stock</th><th>Availability</th><th>Status</th></tr></thead><tbody id="stockRows"></tbody></table></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
